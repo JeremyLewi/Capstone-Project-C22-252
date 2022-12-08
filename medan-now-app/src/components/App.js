@@ -1,40 +1,100 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import logo from '../assets/app-logo.svg';
+import { Route, Routes } from 'react-router-dom';
+import Navigation from './Navigation';
+import ReportPage from '../pages/ReportPage';
+import ProfilePage from '../pages/ProfilePage';
+import DetailPage from '../pages/DetailPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../pages/LoginPage';
+import { getUserLogged, putAccessToken } from '../utils/network-data';
 import HomePage from '../pages/HomePage';
 
-function App() {
-	return (
-		<div className="app-container">
-			<header>
-				<div className="app-bar">
-					<img className="app-logo" src={logo} alt="logo" />
-					<nav className="navigation">
-						<ul>
-							<li>Home</li>
-							<li>Statistic</li>
-							<li>About</li>
-							<li>Contact</li>
-						</ul>
-					</nav>
-					<div className="nav-action">
-						<button className="login__btn">Login</button>
-						<button className="sign-up__btn">Sign Up</button>
-					</div>
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			authedUser: null,
+			initializing: true,
+		};
+
+		this.onLoginSuccess = this.onLoginSuccess.bind(this);
+		this.onLogout = this.onLogout.bind(this);
+	}
+
+	async onLoginSuccess({ accessToken }) {
+		putAccessToken(accessToken);
+		const { data } = await getUserLogged();
+
+		this.setState(() => {
+			return {
+				authedUser: data,
+			};
+		});
+	}
+
+	onLogout() {
+		this.setState(() => {
+			return {
+				authedUser: null,
+			};
+		});
+		putAccessToken('');
+	}
+
+	async componentDidMount() {
+		document.documentElement.setAttribute('data-theme', this.state.theme);
+		const { data } = await getUserLogged();
+		this.setState(() => {
+			return {
+				authedUser: data,
+				initializing: false,
+			};
+		});
+	}
+
+	componentDidUpdate(prevState) {
+		if (prevState.theme !== this.state.theme) {
+			document.documentElement.setAttribute('data-theme', this.state.theme);
+		}
+	}
+
+	render() {
+		if (this.state.initializing) {
+			return null;
+		}
+
+		if (this.state.authedUser === null) {
+			return (
+				<div className="app-container">
+					<main>
+						<Routes>
+							<Route path="/*" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
+							<Route path="/register" element={<RegisterPage />} />
+						</Routes>
+					</main>
 				</div>
-			</header>
-			<main>
-				<Routes>
-					<Route path="/" element={<HomePage />} />
-				</Routes>
-			</main>
-			<footer>
-				<div className="footer">
-					<p>© 2022, Design & Developed by Team C22-252 </p>
-				</div>
-			</footer>
-		</div>
-	);
+			);
+		}
+
+		return (
+			<div className="app-container">
+				<header>
+					<Navigation logout={this.onLogout} name={this.state.authedUser.name} />
+				</header>
+				<main>
+					<Routes>
+						<Route path="/" element={<ProfilePage />} />
+						<Route path="/home" element={<HomePage />} />
+						<Route path="/notes/new" element={<ReportPage />} />
+						<Route path="/notes/:id" element={<DetailPage />} />
+						<Route path="/*" element={<NotFoundPage />} />
+					</Routes>
+				</main>
+			</div>
+		);
+	}
 }
 
 export default App;

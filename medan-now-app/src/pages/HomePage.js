@@ -8,24 +8,28 @@ import card2 from '../assets/card2.svg';
 import card3 from '../assets/card3.svg';
 import card4 from '../assets/card4.svg';
 import card5 from '../assets/card5.svg';
+import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 function HomePage() {
 	return (
 		<>
 			<div className="hero">
-				<div>
+				<div className="hero-content__left">
 					<h1>
 						Layanan Aspirasi dan Pengaduan Online <br /> Masyarakat Kota Medan
 					</h1>
 					<p>
 						Sampaikan Aspirasi dan Keluhan Anda <br /> kepada Pemerintah Kota Medan
 					</p>
-					<button className="hero-btn">Lapor</button>
+
+					<Link to="/notes/new">
+						<button className="hero-btn">Lapor</button>
+					</Link>
 				</div>
 				<img src={hero} alt="hero" />
 			</div>
-
-			<div className="about">
+			<div id="about" className="about">
 				<h2>Tentang Kami</h2>
 				<p>
 					Medan Now adalah Aplikasi Pengelolaan Pengaduan Masyarakat dan Pelayanan terhadap <br />
@@ -67,11 +71,10 @@ function HomePage() {
 							</div>
 						</div>
 					</div>
-					<img src={about} alt="quality"></img>
+					<img className="about-svg" src={about} alt="quality"></img>
 				</div>
 			</div>
-
-			<div className="steps">
+			<div id='procedures' className="steps">
 				<h2>Prosedur Pelaporan</h2>
 				<p>Berikut adalah prosedur pengaduan di Aplikasi Medan Now</p>
 				<div className="step-cards">
@@ -102,8 +105,7 @@ function HomePage() {
 					</div>
 				</div>
 			</div>
-
-			<div className="statistic">
+			<div id='statistic' className="statistic">
 				<h2>Statistik </h2>
 				<p>Berikut adalah statistik pengaduan masyarakat kepada kami</p>
 				<div className="statistic-items">
@@ -122,35 +124,7 @@ function HomePage() {
 				</div>
 			</div>
 
-			<div className="contact-us">
-				<h2>Contact Us</h2>
-				<div className="contact-us__form__input">
-					<div className="contact-us__form__input__group">
-						<div className="contact-us__form__input__item">
-							<label htmlFor="first-name">First Name</label>
-							<input placeholder="First Name"></input>
-						</div>
-						<div className="contact-us__form__input__item">
-							<label htmlFor="last-name">Last Name</label>
-							<input placeholder="Last Name"></input>
-						</div>
-					</div>
-
-					<div className="contact-us__form__input__group">
-						<div className="contact-us__form__input__email">
-							<label htmlFor="email">Email Address</label>
-							<input placeholder="Email Address"></input>
-						</div>
-					</div>
-					<div className="contact-us__form__input__group">
-						<div className="contact-us__form__input__message">
-							<label htmlFor="text">Your Message</label>
-							<textarea placeholder="Textarea"></textarea>
-						</div>
-					</div>
-					<button className="contact-us__form__input__btn">Send Message</button>
-				</div>
-			</div>
+			<Footer />
 		</>
 	);
 }

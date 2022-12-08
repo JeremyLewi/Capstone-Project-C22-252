@@ -86,6 +86,7 @@ class App extends React.Component {
 				<main>
 					<Routes>
 						<Route path="/" element={<HomePage />} />
+						<Route path="/home" element={<HomePage />} />
 						<Route path="/profile" element={<ProfilePage />} />
 						<Route path="/notes/new" element={<ReportPage />} />
 						<Route path="/notes/:id" element={<DetailPage />} />

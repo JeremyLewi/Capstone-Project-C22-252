@@ -8,7 +8,7 @@ function ReportPage() {
 
 	async function onAddNoteHandler(note) {
 		await addNote(note);
-		navigate('/');
+		navigate('/profile');
 	}
 
 	return <ReportInput addNote={onAddNoteHandler} />;

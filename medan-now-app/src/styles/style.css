@@ -135,3 +135,20 @@ textarea {
 .toggle-locale {
 	font-size: 28px;
 }
+
+.footer {
+	height: 100%;
+	width: 100%;
+	background-image: url(../assets/wave.svg);
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
+.footer p {
+	display: flex;
+	justify-content: center;
+	padding-top: 360px;
+	color: #fff;
+	font-size: 14px;
+	padding-bottom: 20px;
+}

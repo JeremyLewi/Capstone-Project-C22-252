@@ -263,24 +263,6 @@ Statistic
 	font-weight: 700;
 }
 
-/* 
-Footer
-*/
-
-.footer {
-	min-height: 200px;
-	background-image: url(../assets/wave.svg);
-	background-repeat: no-repeat;
-	background-position: bottom;
-}
-
-.footer p {
-	display: flex;
-	justify-content: center;
-	padding-top: 160px;
-	color: #fff;
-}
-
 /*? Responsive  */
 
 @media screen and (max-width: 1024px) {
@@ -508,25 +490,6 @@ Statistic
 		font-weight: 400;
 		padding: 11px;
 		text-align: center;
-	}
-
-	/* 
-Footer
-*/
-
-	.footer {
-		min-height: 200px;
-		background-image: url(../assets/wave.svg);
-		background-repeat: no-repeat;
-		background-position: bottom;
-	}
-
-	.footer p {
-		display: flex;
-		justify-content: center;
-		padding-top: 160px;
-		color: #fff;
-		font-size: 14px;
 	}
 }
 
@@ -858,16 +821,5 @@ Footer
 		font-size: 0.8rem;
 		font-weight: 400;
 		text-align: center;
-	}
-
-	/* 
-	Footer
-	*/
-
-	.footer {
-		min-height: 200px;
-		background-image: url(../assets/wave.svg);
-		background-repeat: no-repeat;
-		background-position: bottom;
 	}
 }

@@ -12,7 +12,7 @@ function DetailPage() {
 
 	async function onDeleteNoteHandler() {
 		await deleteNote(id);
-		navigate('/');
+		navigate('/profile');
 	}
 
 	React.useEffect(() => {

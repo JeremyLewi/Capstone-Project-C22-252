@@ -4,7 +4,7 @@ import useInput from '../hooks/useInput';
 import logo from '../assets/app-logo.svg';
 import { HiOutlineMail } from 'react-icons/hi';
 import { HiOutlineLockClosed } from 'react-icons/hi';
-import {FiUser} from 'react-icons/fi';
+import { FiUser } from 'react-icons/fi';
 import { FcGoogle } from 'react-icons/fc';
 import { GrFacebook } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
@@ -81,7 +81,7 @@ function RegisterInput({ register }) {
 					</button>
 				</div>
 				<p className="text-no-account">Already have an account?</p>
-				<Link className="alt-nav" to="/*">
+				<Link className="alt-nav" to="/">
 					Login
 				</Link>
 			</div>

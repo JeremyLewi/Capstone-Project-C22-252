@@ -37,7 +37,7 @@ function Navigation({ logout, name }) {
 				<div className="nav-action">
 					<div className="user-name">
 						<FaUserCircle className="user-icon" />
-						<Link className="profile-nav" to="/">
+						<Link className="profile-nav" to="/profile">
 							{name}
 						</Link>
 					</div>

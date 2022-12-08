@@ -4,6 +4,7 @@ import ReportList from '../components/ReportList';
 import { useSearchParams } from 'react-router-dom';
 import { getActiveNotes } from '../utils/network-data';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 function ProfilePage() {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -36,10 +37,11 @@ function ProfilePage() {
 				{notes.length !== 0 ? (
 					<ReportList notes={filteredNotes} />
 				) : (
-					<section className="notes-list__empty">
-						<p className="notes-list__empty">
-							Anda belum memiliki riwayat laporan
-						</p>
+					<section className="reports-list__empty">
+						<p className="reports-list__empty__text">Anda belum memiliki riwayat laporan</p>
+						<Link className="reports-list__empty__link" to="/notes/new">
+							Buat Laporan baru
+						</Link>
 					</section>
 				)}
 			</section>
